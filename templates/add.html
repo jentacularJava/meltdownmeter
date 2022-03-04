@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Entry
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="post">
+        <div class="mb-3">
+            <label for="datetime">Date and time of event</label>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="datetime" id="datetime" type="datetime-local">
+        </div>
+        <div class="mb-3">
+            <label for="before" class="form-label">Trigger:</label>
+            <textarea class="form-control" placeholder="What triggered the event? What happened just before the event?" name="before" id="before" rows="4"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="before" class="form-label">Child's Behaviour:*</label>
+            <textarea class="form-control" placeholder="What were the child's behaviours during the event?" name="during" id="during" rows="4"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="before" class="form-label">Caregiver's behaviour:</label>
+            <textarea class="form-control" placeholder="How did you respond to the child's behaviour?" name="response" id="response" rows="4"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="before" class="form-label">Resolution:</label>
+            <textarea class="form-control" placeholder="What made the event end? What caused the behaviour to stop/change?" name="resolved" id="resolved" rows="4"></textarea>
+          </div>
+        <button class="btn btn-primary" type="submit">Add Entry</button>
+    </form>
+{% endblock %}
