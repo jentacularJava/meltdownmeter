@@ -1,5 +1,5 @@
 # Meltdown Meter
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://www.youtube.com/watch?v=5AQkl2rVgeU
 #### Description:
 
 Meltdown meter is a tool for people (typically caregivers of children) to track behaviour. The goal is to add an entry every time the behaviour (e.g., a meltdown) occurs, log the details on what triggered the meltdown, what happened during the meltdown, and what made it end. This can help you identify patterns in the behaviour, which can help you reduce the intensity, duration, and/or frequency of the meltdownsn. You can also bring this information to your child's doctor's appointments and the doctor can help analyze the information and make suggestions. At first you could use this to track the baseline of the behaviours. Try to track behaviours for at least one week to get a good sample. Then once you start using any new therapies, track the behaviour again and see if there has been a difference.
