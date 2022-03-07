@@ -6,7 +6,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, lookup, usd, format_datetime
+from helpers import apology, login_required
 
 # Configure application
 app = Flask(__name__)
@@ -15,12 +15,9 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Custom filter
-app.jinja_env.filters["usd"] = usd
+#app.jinja_env.filters["usd"] = usd
 
 # TODO: Figure out how to create custom filter for date time format on index, entries, and account pages.
-
-# Register the template filter with the Jinja Environment
-app.jinja_env.filters["formatdatetime"] = format_datetime
 
 # from https://jinja.palletsprojects.com/en/3.0.x/api/
 def datetime_format(value, format="%H:%M %d-%m-%y"):
@@ -64,22 +61,6 @@ def index():
         WHERE id = ?""", session["user_id"])[0]["username"]
 
     return render_template("index.html", entries=entries, username=username)
-
-
-@app.route("/addcash", methods=["GET", "POST"])
-@login_required
-def addcash():
-    if request.method == "POST":
-        if not request.form.get("amount"):
-            return apology("Please enter amount", 400)
-        update = db.execute("""
-            UPDATE users
-            SET cash = (cash + ?)
-            WHERE id = ?""", request.form.get("amount"), session["user_id"])
-        flash("Cash added!")
-        return redirect("/addcash")
-    balance = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])[0]
-    return render_template("addcash.html", balance=balance)
 
 
 @app.route("/add", methods=["GET", "POST"])

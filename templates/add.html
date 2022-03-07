@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block main %}
+    <h1>Add Entry</h1>
     <form action="/add" method="post">
         <div class="mb-3">
-            <label for="datetime">Date and time of event</label>
+            <label for="datetime">*Date and time of event</label>
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="datetime" id="datetime" type="datetime-local">
         </div>
         <div class="mb-3">
@@ -15,7 +16,7 @@
             <textarea class="form-control" placeholder="What triggered the event? What happened just before the event?" name="before" id="before" rows="4"></textarea>
           </div>
           <div class="mb-3">
-            <label for="before" class="form-label">Child's Behaviour:*</label>
+            <label for="before" class="form-label">*Child's Behaviour:</label>
             <textarea class="form-control" placeholder="What were the child's behaviours during the event?" name="during" id="during" rows="4"></textarea>
           </div>
           <div class="mb-3">
