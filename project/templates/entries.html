@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Entries
+{% endblock %}
+
+{% block main %}
+
+    {% block body %}
+
+        <h2 class="indexpage"> Previous entries </h2>
+        <main class="container py-5 text-center">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-start">Date and Time</th>
+                        <th class="text-start">Trigger</th>
+                        <th class="text-start">Child's Behaviour</th>
+                        <th class="text-start">Caregiver's behaviour</th>
+                        <th class="text-start">Resolution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in entries %}
+                        <tr>
+                            <td class="text-start">{{ entry["datetime"] }} </td>
+                            <td class="text-start">{{ entry["before"] }}</td>
+                            <td class="text-start">{{ entry["during"] }}</td>
+                            <td class="text-start">{{ entry["response"] }}</td>
+                            <td class="text-start">{{ entry["resolved"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+                <!-- TODO: add this feature later, once I add the intensity and duration fields.
+                <tfoot>
+                    <tr>
+                        <td class="border-0 fw-bold text-end" colspan="4">Average Intensity</td>
+                        <td class="border-0 text-end"></td>
+                    </tr>
+                    <tr>
+                        <td class="border-0 fw-bold text-end" colspan="4">Average Duration</td>
+                        <td class="border-0 w-bold text-end"></td>
+                    </tr>
+                </tfoot>
+                -->
+            </table>
+
+        </main>
+    {% endblock %}
+
+{% endblock %}
+
+
