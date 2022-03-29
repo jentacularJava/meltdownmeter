@@ -190,7 +190,7 @@ def register():
                     INSERT INTO users (username, hash)
                     VALUES (?, ?)""", request.form.get("username"), generate_password_hash(request.form.get("password")))
                 # Query database to use for session id
-                rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+                rows = db.execute("SELECT * FROM users WHERE username LIKE ?", request.form.get("username"))
 
                 # Remember which user has logged in
                 session["user_id"] = rows[0]["id"]
