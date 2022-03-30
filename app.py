@@ -41,10 +41,6 @@ uri = os.getenv("DATABASE_URL")
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://")
 db = SQL(uri)
-<<<<<<< HEAD
-
-=======
->>>>>>> username
 
 # Make sure API key is set
 # if not os.environ.get("API_KEY"):
