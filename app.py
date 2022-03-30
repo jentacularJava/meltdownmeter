@@ -31,10 +31,6 @@ Session(app)
 
 # Configure CS50 Library to use SQLite database
 #db = SQL("sqlite:///meltdown.db")
-<<<<<<< HEAD
-
-=======
->>>>>>> username
 
 # Configure to use the postgresql db
 uri = os.getenv("DATABASE_URL")
