@@ -30,18 +30,17 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///meltdown.db")
+#db = SQL("sqlite:///meltdown.db")
 
 # Configure to use the postgresql db
-# uri = os.getenv("DATABASE_URL")
-# if uri.startswith("postgres://"):
-#     uri = uri.replace("postgres://", "postgresql://")
-# db = SQL(uri)
+uri = os.getenv("DATABASE_URL")
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://")
+db = SQL(uri)
 
 # Make sure API key is set
 # if not os.environ.get("API_KEY"):
 #    raise RuntimeError("API_KEY not set")
-
 
 @app.after_request
 def after_request(response):
@@ -126,7 +125,7 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username LIKE ?", request.form.get("username"))
+        rows = db.execute("SELECT * FROM users WHERE LOWER(username) = LOWER(?)", request.form.get("username"))
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
@@ -175,7 +174,7 @@ def register():
         else:
 
             # Query database for username
-            rows = db.execute("SELECT * FROM users WHERE username LIKE ?", request.form.get("username"))
+            rows = db.execute("SELECT * FROM users WHERE LOWER(username) = LOWER(?)", request.form.get("username"))
 
             # Ensure username exists and password is correct
             if len(rows) > 0:
